@@ -14,20 +14,20 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
-      - name: Config 
+      - name: Config solver
         run: cmake ${{github.workspace}} -B ${{github.workspace}}/build -D PRINT_VERSION=1.0.0
 
-      - name: Build 
+      - name: Build solver
         run: cmake --build ${{github.workspace}}/build
 
-      - name: Build 
+      - name: Build package
         run: cmake --build ${{github.workspace}}/build --target package
 
-      - name: Build 
+      - name: Build source package
         run: cmake --build ${{github.workspace}}/build --target package_source
 
       - name: Make a release
-        uses: ncipollo/release-action@v1.11.0
+        uses: ncipollo/release-action@v1.10.0
         with:
           tag: v1.0.0
           artifacts: "build/*.deb,build/*.tar.gz,build/*.zip"
@@ -35,7 +35,5 @@ jobs:
       - name: Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: example
-          path: build/example
-      - name: Build example
-    run: cmake --build ${{github.workspace}}/build
+          name: solver
+          path: build/solver
