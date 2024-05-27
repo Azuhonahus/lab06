@@ -1,20 +1,21 @@
-name: build
-run-name: build
+name: CPack
+
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-jobs:
-  testing:
-    runs-on: ubuntu-latest
-    steps:
-      - name: load_repository
-        uses: actions/checkout@v4
-      - name: Build
-        run: cd solver_application && cmake -H. -B build && cmake --build build
-      - name: Artifact
-        uses: actions/upload-artifact@v4
-        with:
-         name: example
-         path: solver_application/build/equation
+ push:
+  branches: [main]
+ pull_request:
+  branches: [main]
+
+jobs: 
+ build_Linux:
+
+  runs-on: ubuntu-latest
+
+  steps:
+  - uses: actions/checkout@v4
+
+  - name: Configure solver
+    run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
+
+  - name: Build solver
+    run: cmake --build ${{github.workspace}}/build
