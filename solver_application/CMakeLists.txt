@@ -12,3 +12,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../formatter_ex_lib/ formatter_ex_l
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../solver_lib/ solver_lib)
 
 target_link_libraries(main formatter_ex_lib solver_lib)
+
+include(CPack.cmake)
