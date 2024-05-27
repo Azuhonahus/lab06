@@ -13,4 +13,4 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../solver_lib/ solver_lib)
 
 target_link_libraries(main formatter_ex_lib solver_lib)
 
-include(CPack.cmake)
+include(CPackConfig.cmake)
