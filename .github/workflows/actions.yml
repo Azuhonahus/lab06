@@ -18,4 +18,3 @@ jobs:
         with:
           name: example
           path: solver_application/build/equation
-      - name: Build example
