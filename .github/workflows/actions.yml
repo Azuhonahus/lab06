@@ -1,0 +1,20 @@
+name: build
+run-name: build
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: load_repository
+        uses: actions/checkout@v4
+      - name: Build
+        run: cd solver_application && cmake -H. -B build && cmake --build build
+      - name: Artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: example
+          path: solver_application/build/equation
