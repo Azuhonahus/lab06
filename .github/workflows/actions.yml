@@ -19,4 +19,3 @@ jobs:
           name: example
           path: solver_application/build/equation
       - name: Build example
-    run: cmake --build ${{github.workspace}}/build
