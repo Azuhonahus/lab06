@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         run: cd solver_application && cmake -H. -B build && cmake --build build
-      - name: Artifacts
+      - name: Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: example
-          path: solver_application/build/equation
+         name: example
+         path: solver_application/build/equation
